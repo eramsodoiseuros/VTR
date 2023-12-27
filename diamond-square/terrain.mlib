@@ -1,0 +1,48 @@
+<?xml version="1.0" ?>
+<materialLib name="Terrain">
+
+    <textures>
+		<texture name="grass" filename="textures\grass.PNG"/>
+		<texture name="snow" filename="textures\snow.PNG"/>
+	</textures>
+
+	<shaders>
+		<shader name="diamond-square" 	ps="shaders/display.frag"
+										vs="shaders/model.vert" />
+	</shaders>
+	
+	<materials>
+		
+		<material name="diamond-square-terrain" >
+			<shader name="diamond-square" >
+				<values>
+                    <valueof uniform="projectionViewModel" 	    type="RENDERER" context="CURRENT" 
+											        component="PROJECTION_VIEW_MODEL"  />	
+
+					<valueof uniform="viewModel" 	    type="RENDERER" context="CURRENT" 
+											        component="VIEW_MODEL"  />								
+												
+					<valueof uniform="normalMatrix" 	type="RENDERER" context="CURRENT" 
+											        component="NORMAL"  />	
+												
+					<valueof uniform="viewMatrix" 	    type="RENDERER" context="CURRENT" 
+											        component="VIEW"  />	
+												
+					<valueof uniform="lightDirection"	    type="LIGHT" context="Sun"
+											        component="DIRECTION"/>
+
+					<valueof uniform="snowTexture"      type="TEXTURE_BINDING" context="CURRENT"
+							                        component="UNIT" id=1 />								
+
+                    <valueof uniform="grassTexture"      type="TEXTURE_BINDING" context="CURRENT"
+							                        component="UNIT" id=0 />	
+                </values>
+            </shader>
+			<textures>
+				<texture name="grass" UNIT = 0 />
+				<texture name="snow" UNIT = 1 />
+			</textures>
+		</material>	
+	</materials>
+	
+</materialLib>
